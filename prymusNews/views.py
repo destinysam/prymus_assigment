@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from rest_framework import viewsets
+from rest_framework import viewsets,filters
 from .models import News
 from .serializers import NewsSerializer
 from django_filters.rest_framework import DjangoFilterBackend
@@ -7,6 +7,6 @@ from django_filters.rest_framework import DjangoFilterBackend
 
 class NewsView(viewsets.ModelViewSet):
     serializer_class = NewsSerializer
-    filter_backends = [DjangoFilterBackend]
-    filterset_fields = ["tags","title","content"]
+    filter_backends = [filters.SearchFilter]
+    search_fields = ["tags","title","content"]
     queryset = News.objects.all().order_by("-dated")
