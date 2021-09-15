@@ -7,6 +7,8 @@ from django_filters.rest_framework import DjangoFilterBackend
 
 class NewsView(viewsets.ModelViewSet):
     serializer_class = NewsSerializer
-    filter_backends = [filters.SearchFilter]
+    filter_backends = [filters.SearchFilter,DjangoFilterBackend]
     search_fields = ["tags","title","content"]
-    queryset = News.objects.all().order_by("-dated")
+    filterset_fields = ["category"]
+    queryset = News.objects.all()
+    print(len(queryset))
