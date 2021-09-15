@@ -4,8 +4,7 @@ from . import views
 from rest_framework import routers
 
 router = routers.DefaultRouter()
-router.register("allNews",views.NewsView)
-router.register("searchnews",views.SearchNews)
+router.register("News",views.NewsView)
 urlpatterns = [
     path("",include(router.urls))
 ]
