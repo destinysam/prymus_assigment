@@ -1,14 +1,17 @@
 from django.shortcuts import render
 from rest_framework import viewsets,filters
-from .models import News
-from .serializers import NewsSerializer
+from .models import News # Import Model
+from .serializers import NewsSerializer # Import Serializer Class defined in the serializer.py
 from django_filters.rest_framework import DjangoFilterBackend
-# Create your views here.
+from rest_framework.pagination import LimitOffsetPagination
 
-class NewsView(viewsets.ModelViewSet):
-    serializer_class = NewsSerializer
+
+class NewsView(viewsets.ModelViewSet): # View Class
+    serializer_class = NewsSerializer # Serializer Class
+    pagination_class = LimitOffsetPagination # Controlling Limit and offset in the view level
     filter_backends = [filters.SearchFilter,DjangoFilterBackend]
-    search_fields = ["tags","title","content"]
-    filterset_fields = ["category"]
-    queryset = News.objects.all()
-    print(len(queryset))
+    search_fields = ["tags","title","content"] # DRF-Api TASK 2
+    filterset_fields = ["category"] # DRF-Api Task 1
+    queryset = News.objects.all().order_by("-dated") # DRF-Api Task 3
+    # Response Time < 60 
+#    print(len(queryset)) # Check queryset length

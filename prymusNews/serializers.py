@@ -1,7 +1,8 @@
 from rest_framework import serializers
-from .models import News
+from .models import News # importing our Model
+# Using serializers to convert complex data(querysets) into python datatypes
 
-class NewsSerializer(serializers.ModelSerializer):
+class NewsSerializer(serializers.ModelSerializer): # Defining Serializer Class
     class Meta:
-        model = News
-        fields = "__all__"  
+        model = News # Reprsents Our Model
+        fields = "__all__"  # All fields to show
