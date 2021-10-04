@@ -7,6 +7,7 @@ router = routers.DefaultRouter() # Using DefaultRouter to show additonal api roo
 # Using routers to build Url
 router.register("News",views.NewsView)
 router.register("videoViews",views.VideoView,basename="ViewOnNews")
+
 urlpatterns = [
     path("",include(router.urls))
 ]
