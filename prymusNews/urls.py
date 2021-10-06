@@ -9,5 +9,6 @@ router.register("News",views.NewsView)
 router.register("videoViews",views.VideoView,basename="ViewOnNews")
 
 urlpatterns = [
-    path("",include(router.urls))
+    path("",include(router.urls)),
+    path("postVideo/",views.PostVideo,name="VideoList")
 ]

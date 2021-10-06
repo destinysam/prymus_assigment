@@ -12,4 +12,4 @@ class VideoSerialzier(serializers.ModelSerializer):
     author = serializers.CharField(source="author.username",read_only=True)
     class Meta:
         model =  ViewOnNews
-        fields = ["news","author","videofile","dated","video_likes"]
+        fields = ["news","author","videofile","dated","video_tags","video_likes"]

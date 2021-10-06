@@ -19,7 +19,7 @@ class ViewOnNews(models.Model):
     videofile = models.FileField(upload_to="uploaded-videos",null=True)
     dated = models.DateTimeField(auto_now_add=True)
     video_tags = models.CharField(max_length=200)
-    video_likes = models.IntegerField(null=True)
+    video_likes = models.IntegerField(default=0,null=True)
 
     def __str__(self):
         return self.news.title
